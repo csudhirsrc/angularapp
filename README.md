@@ -1,21 +1,13 @@
 
-# Dockerized Angular 4 App (with Angular CLI)
+# Angular 4 App (with Angular CLI)
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+## Install Node from https://nodejs.org/en/
 
-## Build docker image
+## Run below commands
 
-```
-$ docker build -t myapp . 
-```
+npm install
 
-## Run the container
+npm start
 
-```
-$ docker run -d -p 8080:80 myapp
-```
+Application will be available in localhost:4200
 
-
-The app will be available at http://localhost:8080
-
-You can easily tweak the nginx config in ```nginx/default.conf```
