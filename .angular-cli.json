@@ -19,9 +19,27 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.sass"
+	      "styles.scss",
+	      "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+	      "../node_modules/animate.css/animate.min.css",
+	      "../node_modules/jqueryui/jquery-ui.min.css",
+	      "../node_modules/primeui/themes/delta/theme.css",
+	      "../node_modules/primeng/resources/primeng.min.css",
+	      "../node_modules/angular2-busy/build/style/busy.css",
+	      "../node_modules/ladda/dist/ladda-themeless.min.css",
+		  "../node_modules/ng2-toastr/bundles/ng2-toastr.min.css",
+	      "../node_modules/font-awesome/css/font-awesome.min.css"
       ],
-      "scripts": [],
+      "scripts": [
+	      "../node_modules/jquery/dist/jquery.min.js",
+	      "../node_modules/jqueryui/jquery-ui.min.js",
+	      "../node_modules/jquery-slimscroll/jquery.slimscroll.min.js",		  
+	      "../node_modules/bootstrap/dist/js/bootstrap.min.js",		  
+	      "../node_modules/underscore/underscore-min.js",
+	      "../node_modules/metismenu/dist/metisMenu.min.js",
+	      "../node_modules/moment/min/moment-with-locales.min.js",
+	      "../node_modules/google-libphonenumber/dist/libphonenumber.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
