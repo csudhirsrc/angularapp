@@ -20,7 +20,7 @@
                 <img src="assets/images/home-page-transparent.png" class="transparent-image" />
             </div>
         </div>
-        <div class="carousel-caption">
+        <div class="carousel-caption" *ngIf="!displaySearchBar">
             <h2>Order your food requirement now at Crashmeal</h2>
             <h3>Enjoy your fresh food</h3>
             <div style="text-align: left;padding-left: 150px;width: 70%">
@@ -29,9 +29,11 @@
                 <input type="radio" name="type" />Dine-in
                 <div class="location-search-addon">
                     <i class="fa fa-map-marker" id="locator" aria-hidden="true" style="color: green"></i>
-                    <i class="fa fa-crosshairs" id="locate-me" aria-hidden="true" style="color: black"></i>
-                    <input type="text" class="form-control" placeholder="Start Enter your Location" />
-                </div>
+                    <img src="assets/images/gpr-icon.jpg" id="locate-me" style="height: 38px; width: 42px;"/>
+                    <!-- <i class="fa fa-crosshairs" id="locate-me" aria-hidden="true" style="color: black"></i> -->
+                    <button type="submit" class="btn btn-success btn-block" id="button">FIND FOOD</button>
+                    <input type="text" class="form-control" placeholder="Start Enter your Location" style="height: 40px"/>                    
+                </div>                
             </div>
         </div>
     </div>

@@ -11,6 +11,7 @@ import { CrashmealFooterComponent } from './landing-page/crashmeal-footer.compon
 import { SecondLayerComponent } from './landing-page/second-layer.component';
 import { ThirdLayerComponent } from './landing-page/third-layer.component';
 import { FourthLayerComponent } from './landing-page/fourth-layer.component';
+import { LoginSignupComponent } from './landing-page/login-singup.component';
 
 @NgModule({
     declarations: [
@@ -20,7 +21,8 @@ import { FourthLayerComponent } from './landing-page/fourth-layer.component';
         CrashmealFooterComponent,
         SecondLayerComponent,
         ThirdLayerComponent,
-        FourthLayerComponent 
+        FourthLayerComponent,
+        LoginSignupComponent 
     ],
 
     imports: [
