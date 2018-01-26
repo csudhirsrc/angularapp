@@ -107,13 +107,23 @@ footer a:hover {
     position: absolute;
     padding: 10px 12px;
     pointer-events: none;
+    font-size: 20px;
 }
 
 .location-search-addon #locate-me {
     position: absolute;
     right: 0px;
+    padding: 10px 12px;    
+    font-size: 20px;
+}
+
+.location-search-addon #button {
+    position: absolute;
+    right: -100px;
     padding: 10px 12px;
-    pointer-events: none;
+    width: 104px;
+    background-color: #00923f;
+    height: 40px;    
 }
 
 .slide-image
