@@ -74,8 +74,22 @@ footer a:hover {
     padding-bottom: 450px !important;
 }
 
+.carousel-inner {
+    height: 630px !important;
+}
+
 .carousel-control {
     bottom: 200px !important;     
+}
+
+.carousel-control.left {
+    height: 100% !important;
+    z-index: 11;
+}
+
+.carousel-control.right {
+    height: 100% !important;
+    z-index: 11;
 }
 
 .button-white {
@@ -92,6 +106,8 @@ footer a:hover {
 .circle-border-icon {
     display: inline-block;
     border-radius: 50%;
+    height: 25px;
+    width: 28px;
     box-shadow: 0px 0px 2px white;
     padding: 0.5em 0.6em;
 }
@@ -126,19 +142,6 @@ footer a:hover {
     height: 40px;    
 }
 
-.slide-image
-{
-	position: relative;
-	top: 0;
-	left: 0;
-}
-.transparent-image
-{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-}
-
 .thirdLayer {
     position: relative;    
 } 
@@ -160,4 +163,38 @@ footer a:hover {
     top: 360px;
     right: 0px;    
 }
+
+agm-map {
+    height: 316px;
+    width: 631px;
+}
+
+.agm-map-container-inner .sebm-google-map-container-inner {
+    border: 1px solid green !important;
+}
+
+.search-location-display {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    //left: 340px;
+    color: white;
+}
+
+.edit-location {
+    position: absolute;
+    top: 447px;
+    right: 0px;
+    width: 100%;
+}
+
+#bg {
+    position: relative;   
+}
+
+.agm-map-content div{
+    border: 5px solid red !important;
+}
+
+  
 
