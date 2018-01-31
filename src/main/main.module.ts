@@ -1,4 +1,6 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule, APP_INITIALIZER, ApplicationRef } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Http } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
@@ -12,6 +14,9 @@ import { SecondLayerComponent } from './landing-page/second-layer.component';
 import { ThirdLayerComponent } from './landing-page/third-layer.component';
 import { FourthLayerComponent } from './landing-page/fourth-layer.component';
 import { LoginSignupComponent } from './landing-page/login-singup.component';
+import { AgmCoreModule } from '@agm/core';
+
+
 
 @NgModule({
     declarations: [
@@ -22,20 +27,27 @@ import { LoginSignupComponent } from './landing-page/login-singup.component';
         SecondLayerComponent,
         ThirdLayerComponent,
         FourthLayerComponent,
-        LoginSignupComponent 
+        LoginSignupComponent
     ],
 
     imports: [
         BrowserModule,
-        BrowserAnimationsModule        
+        BrowserAnimationsModule,
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyCSDaTkl_YIMafkL3br1RvQn7IUGT9aT_I',
+            libraries: ["places"]
+        })
     ],
 
     providers: [
-        
+
     ],
 
     entryComponents: [
-        
+
     ],
 
     bootstrap: [

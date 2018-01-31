@@ -10,7 +10,7 @@ export class LandingPageComponent {
 
   @HostListener('window:scroll', ['$event'])
   track(event) {    
-    if(window.pageYOffset > 300) {
+    if(window.pageYOffset > 180) {
       this.displayHeaderBar = true;
     } else {
       this.displayHeaderBar = false;

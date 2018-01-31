@@ -1,50 +1,118 @@
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+<div id="bg" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#bg" data-slide-to="0" class="active"></li>
+        <li data-target="#bg" data-slide-to="1"></li>
+        <li data-target="#bg" data-slide-to="2"></li>
+        <li data-target="#bg" data-slide-to="3"></li>
     </ol>
 
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <div style="position: relative; left: 0; top: 0;">
-                <img src="assets/images/500516612.jpg" class="slide-image" />
-                <img src="assets/images/home-page-transparent.png" class="transparent-image" />
+                <img src="assets/images/CM-Main-BG-Images00.jpg" />
             </div>
         </div>
 
         <div class="item">
             <div style="position: relative; left: 0; top: 0;">
-                <img src="assets/images/500516612.jpg" class="slide-image" />
-                <img src="assets/images/home-page-transparent.png" class="transparent-image" />
+                <img src="assets/images/CM-Main-BG-Images01.jpg" />
             </div>
         </div>
-        <div class="carousel-caption" *ngIf="!displaySearchBar">
-            <h2>Order your food requirement now at Crashmeal</h2>
-            <h3>Enjoy your fresh food</h3>
-            <div style="text-align: left;padding-left: 150px;width: 70%">
-                <input type="radio" name="type" />Delivery &nbsp;&nbsp;
-                <input type="radio" name="type" /> Pickup &nbsp;&nbsp;
-                <input type="radio" name="type" />Dine-in
-                <div class="location-search-addon">
-                    <i class="fa fa-map-marker" id="locator" aria-hidden="true" style="color: green"></i>
-                    <img src="assets/images/gpr-icon.jpg" id="locate-me" style="height: 38px; width: 42px;"/>
-                    <!-- <i class="fa fa-crosshairs" id="locate-me" aria-hidden="true" style="color: black"></i> -->
-                    <button type="submit" class="btn btn-success btn-block" id="button">FIND FOOD</button>
-                    <input type="text" class="form-control" placeholder="Start Enter your Location" style="height: 40px"/>                    
-                </div>                
+        <div class="item">
+            <div style="position: relative; left: 0; top: 0;">
+                <img src="assets/images/CM-Main-BG-Images02.jpg" />
+            </div>
+        </div>
+        <div class="item">
+            <div style="position: relative; left: 0; top: 0;">
+                <img src="assets/images/CM-Main-BG-Images03.jpg" />
             </div>
         </div>
     </div>
 
     <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <i class="fa fa-angle-left glyphicon-chevron-left" aria-hidden="true"></i>
+    <a class="left carousel-control">
+        <i class="fa fa-angle-left glyphicon-chevron-left" aria-hidden="true" data-slide="prev" role="button" href="#bg"></i>
         <span class="sr-only">Previous</span>
     </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="fa fa-angle-right glyphicon-chevron-right" aria-hidden="true"></span>
+    <a class="right carousel-control">
+        <span class="fa fa-angle-right glyphicon-chevron-right" aria-hidden="true" href="#bg" role="button" data-slide="next"></span>
         <span class="sr-only">Next</span>
     </a>
+
+    <div class="search-location-display">
+        <div class="row" style="margin-left: 0px;margin-right: 0px">
+            <div class="col-md-12" align="center">
+                <h2>Order your food requirement now at Crashmeal</h2>
+            </div>
+        </div>
+        <div class="row" style="margin-left: 0px;margin-right: 0px">
+            <div class="col-md-12" align="center">
+                <h3>Enjoy your fresh food</h3>
+            </div>
+        </div>
+        <div class="row" style="margin-left: 0px;margin-right: 0px">
+            <div class="col-md-3"></div>
+            <div class="col-md-5" align="center">
+                <div style="padding-left: 0px; text-align: left">
+                    <input type="radio" name="type" />Delivery &nbsp;&nbsp;
+                    <input type="radio" name="type" /> Pickup &nbsp;&nbsp;
+                    <input type="radio" name="type" />Dine-in
+                    <div class="location-search-addon">
+                        <i class="fa fa-map-marker" id="locator" aria-hidden="true" style="color: green"></i>
+                        <img src="assets/images/gpr-icon.jpg" id="locate-me" style="height: 38px; width: 42px;" (click)="setCurrentPosition()" />
+                        <!-- <i class="fa fa-crosshairs" id="locate-me" aria-hidden="true" style="color: black"></i> -->
+                        <button class="btn btn-success" id="button" (click)="openMapLocation()">FIND FOOD</button>
+                        <input type="text" class="form-control" (change)="reloadElement()" placeholder="Start Enter your Location" autocorrect="off"
+                            autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"
+                            [(ngModel)]="locationName" style="height: 40px;" />
+                    </div>
+                    <div *ngIf="displayMap && !displaySearchBar">
+                        <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
+                            <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng"
+                                [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
+
+                                <agm-info-window>
+                                    <strong>You are here</strong>
+                                </agm-info-window>
+                            </agm-marker>
+                        </agm-map>
+                        <div>
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+
+                <!-- <h2>Order your food requirement now at Crashmeal</h2>
+            <h3>Enjoy your fresh food</h3> -->
+
+            </div>
+        </div>
+
+        <div class="row" class="edit-location" style="margin-left: 0px;margin-right: 0px; margin-top: 0px;" *ngIf="displayMap && !displaySearchBar">
+            <div class="col-md-3"></div>
+            <div class="col-md-5" align="right">
+                <div style="width: 631px; padding-right: 4px;">
+                        <button class="btn btn-sm btn-primary" *ngIf="!markers[0].draggable" (click)="enableEditLocation()">Edit Location</button>
+                        <button class="btn btn-sm btn-primary" *ngIf="markers[0].draggable" (click)="resetLocation()">Reset Location</button>
+                        <button class="btn btn-sm btn-success">Proceed</button>
+                </div>                
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <!-- <div class="edit-location" >
+        <div class="row" style="margin-left: 0px;margin-right: 0px">
+            <div class="col-md-3"></div>
+            <div class="col-md-5" align="center">
+                <button>Edit Location</button>
+                <button>Proceed</button>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div> -->
+
 </div>
