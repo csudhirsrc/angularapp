@@ -14,13 +14,15 @@ declare var google: any;
 export class FirstLayerComponent {
   @Input() public displaySearchBar: boolean;
 
+  public initialLatitude: number;
+  public initialLongitude: number;
+  public initialLocation: string;
   public latitude: number;
   public longitude: number;
   public searchControl: FormControl;
   public locationName: string;
   public zoom: number;
   public isNativeElementLoaded: boolean;
-  public place: google.maps.places.PlaceResult;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -35,8 +37,8 @@ export class FirstLayerComponent {
   ngOnInit() {
     //set google maps defaults
     this.zoom = 17;
-    this.latitude = 39.8282;
-    this.longitude = -98.5795;
+    this.latitude = 0;
+    this.longitude = 0;
 
     //create search FormControl
     this.searchControl = new FormControl();
@@ -50,14 +52,24 @@ export class FirstLayerComponent {
     }
   ];
 
-  public openMapLocation() {
-    this.markers[0].lat = this.latitude;
-    this.markers[0].lng = this.longitude;
+  public openMapLocation(reset?: boolean) {
+
     this.markers[0].draggable = false;
+    if (reset) {
+      this.locationName = this.initialLocation;
+      this.markers[0].lat = this.initialLatitude;
+      this.markers[0].lng = this.initialLongitude;
+      this.latitude = this.initialLatitude;
+      this.longitude = this.initialLongitude;
+    } else {            
+      this.markers[0].lat = this.latitude;
+      this.markers[0].lng = this.longitude;
+    }
     this.displayMap = false;
     setTimeout(() => {
       this.displayMap = true;
     }, 0);
+    console.log(this.markers[0])
   }
 
   mapClicked($event: MouseEvent) {
@@ -68,7 +80,10 @@ export class FirstLayerComponent {
     // });
   }
 
-  markerDragEnd(m: marker, $event: MouseEvent) {
+  markerDragEnd(m: marker, $event: any) {
+    this.getGeoLocation($event.coords.lat, $event.coords.lng, true);
+    this.latitude = $event.coords.lat;
+    this.longitude = $event.coords.lng;
     console.log('dragEnd', m, $event);
   }
 
@@ -79,8 +94,11 @@ export class FirstLayerComponent {
   public setCurrentPosition() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
+        this.initialLatitude = position.coords.latitude;
+        this.initialLongitude = position.coords.longitude;
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
+        this.getGeoLocation(this.initialLatitude, this.initialLongitude);
       });
     }
   }
@@ -105,9 +123,11 @@ export class FirstLayerComponent {
             return;
           }
 
-          this.place = place;
-          this.locationName = this.place.formatted_address;
+          this.locationName = place.formatted_address;
+          this.initialLocation = place.formatted_address;
           //set latitude, longitude and zoom
+          this.initialLatitude = place.geometry.location.lat();
+          this.initialLongitude = place.geometry.location.lng();
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
         });
@@ -126,9 +146,41 @@ export class FirstLayerComponent {
   }
 
   public resetLocation() {
-    this.latitude = this.place.geometry.location.lat();
-    this.longitude = this.place.geometry.location.lng();
-    this.openMapLocation();
+    this.latitude = this.initialLatitude;
+    this.longitude = this.initialLongitude;
+    this.openMapLocation(true);
+  }
+
+  getGeoLocation(lat: number, lng: number, isResetLocationInitial?: boolean) {
+    if (navigator.geolocation) {
+      let geocoder = new google.maps.Geocoder();
+      let latlng = new google.maps.LatLng(lat, lng);
+      let request = { latLng: latlng };
+
+      geocoder.geocode(request, (results, status) => {
+        if (status == google.maps.GeocoderStatus.OK) {
+          let result = results[0];
+          let rsltAdrComponent = result.address_components;
+          let resultLength = rsltAdrComponent.length;
+          if (result != null) {
+            this.locationName = rsltAdrComponent[resultLength - 8].short_name + ', ' + rsltAdrComponent[resultLength - 7].short_name + ', ' +
+              rsltAdrComponent[resultLength - 6].short_name + ', ' + rsltAdrComponent[resultLength - 5].short_name + ', ' + rsltAdrComponent[resultLength - 4].short_name + ', ' +
+              rsltAdrComponent[resultLength - 3].short_name + ', ' + rsltAdrComponent[resultLength - 2].short_name;
+            if (!isResetLocationInitial) {
+              this.initialLocation = rsltAdrComponent[resultLength - 8].short_name + ', ' + rsltAdrComponent[resultLength - 7].short_name + ', ' +
+                rsltAdrComponent[resultLength - 6].short_name + ', ' + rsltAdrComponent[resultLength - 5].short_name + ', ' + rsltAdrComponent[resultLength - 4].short_name + ', ' +
+                rsltAdrComponent[resultLength - 3].short_name + ', ' + rsltAdrComponent[resultLength - 2].short_name;
+            }
+
+            this.searchElementRef.nativeElement.focus();
+            this.searchElementRef.nativeElement.blur();
+            console.log(this.locationName);
+          } else {
+            alert("No address available!");
+          }
+        }
+      });
+    }
   }
 }
 

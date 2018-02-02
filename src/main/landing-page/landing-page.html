@@ -1,10 +1,19 @@
-<div id="landingPageId">
-<crashmeal-header [displayHeaderBar] = "displayHeaderBar"></crashmeal-header>
-<first-layer [displaySearchBar] = "displayHeaderBar"></first-layer>
-<second-layer></second-layer>
-<third-layer></third-layer>
-<fourth-layer></fourth-layer>
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="bottom-height-adjust"></div>
-<crashmeal-footer></crashmeal-footer>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<div class="container-fluid" style="padding-left: 0px; padding-right: 0px">
+    <div id="landingPageId">
+        <crashmeal-header [displayHeaderBar]="displayHeaderBar"></crashmeal-header>
+        <first-layer [displaySearchBar]="displayHeaderBar"></first-layer>
+        <second-layer></second-layer>
+        <third-layer></third-layer>
+        <fourth-layer></fourth-layer>
+
+        <div class="bottom-height-adjust"></div>
+        <crashmeal-footer></crashmeal-footer>
+    </div>
 </div>
+</html>

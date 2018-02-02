@@ -11,23 +11,23 @@
     <div class="carousel-inner" role="listbox">
         <div class="item active">
             <div style="position: relative; left: 0; top: 0;">
-                <img src="assets/images/CM-Main-BG-Images00.jpg" />
+                <img src="assets/images/CM-Main-BG-Images00.jpg" style="height:100vh;"/>
             </div>
         </div>
 
         <div class="item">
             <div style="position: relative; left: 0; top: 0;">
-                <img src="assets/images/CM-Main-BG-Images01.jpg" />
+                <img src="assets/images/CM-Main-BG-Images01.jpg" style="height:100vh;"/>
             </div>
         </div>
         <div class="item">
             <div style="position: relative; left: 0; top: 0;">
-                <img src="assets/images/CM-Main-BG-Images02.jpg" />
+                <img src="assets/images/CM-Main-BG-Images02.jpg" style="height:100vh;"/>
             </div>
         </div>
         <div class="item">
             <div style="position: relative; left: 0; top: 0;">
-                <img src="assets/images/CM-Main-BG-Images03.jpg" />
+                <img src="assets/images/CM-Main-BG-Images03.jpg" style="height:100vh;"/>
             </div>
         </div>
     </div>
@@ -62,12 +62,12 @@
                     <input type="radio" name="type" />Dine-in
                     <div class="location-search-addon">
                         <i class="fa fa-map-marker" id="locator" aria-hidden="true" style="color: green"></i>
-                        <img src="assets/images/gpr-icon.jpg" id="locate-me" style="height: 38px; width: 42px;" (click)="setCurrentPosition()" />
+                        <img src="assets/images/gpr-icon.jpg" id="locate-me" style="height: 38px; width: 42px;cursor: pointer" (click)="setCurrentPosition()" />
                         <!-- <i class="fa fa-crosshairs" id="locate-me" aria-hidden="true" style="color: black"></i> -->
                         <button class="btn btn-success" id="button" (click)="openMapLocation()">FIND FOOD</button>
                         <input type="text" class="form-control" (change)="reloadElement()" placeholder="Start Enter your Location" autocorrect="off"
                             autocapitalize="off" spellcheck="off" type="text" class="form-control" #search [formControl]="searchControl"
-                            [(ngModel)]="locationName" style="height: 40px;" />
+                            [(ngModel)]="locationName" style="height: 40px;"/>
                     </div>
                     <div *ngIf="displayMap && !displaySearchBar">
                         <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
