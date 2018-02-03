@@ -1,23 +1,19 @@
 
+/**
 #landingPageId {
-    font-family: 'Maven Pro', sans-serif;
+    font-family: 'Myriad Set Pro'; letter-spacing: -0.025em;
     background-color: white;
 }
-
+**/
 .carousel-inner img {    
-    width: 100% ; /* Set width to 100% */
-    //height: 100%; /* Set width to 100% */
-    //height:650px !important;
+    width: 100% ; 
     margin: auto ;
 }
-.carousel-caption {
-    color: white !important;
-    //font-weight: bold;
-}
-@media (max-width: 600px) {
-  .carousel-caption {
-    display: none; /* Hide the carousel text when the screen is less than 600 pixels wide */
-  }
+
+@media screen and (min-width: 768px) {
+    .carousel-indicators {
+        bottom: 32px !important;
+    }
 }
 
 .list-group-item:first-child {
@@ -51,7 +47,7 @@
 footer {
     background-color: #2a2e39;
     color: white;
-    height: 40px;
+    height: 6vh;
     position: fixed;
     bottom: 0px;
     width: 100%;
@@ -78,6 +74,27 @@ footer a:hover {
     bottom: 200px !important;     
 }
 
+.carousel-control.left {
+    height: 100% !important;
+    z-index: 11;
+}
+
+.carousel-control.right {
+    height: 100% !important;
+    z-index: 11;
+}
+
+@media (max-width: 768px) {
+    .carousel-control.left {
+        height: 100% !important;
+        z-index: 0;
+    }
+    
+    .carousel-control.right {
+        height: 100% !important;
+        z-index: 0;
+    }
+}
 .button-white {
     background-color: white;
     margin-top: 17px;
@@ -92,13 +109,28 @@ footer a:hover {
 .circle-border-icon {
     display: inline-block;
     border-radius: 50%;
+    height: 25px;
+    width: 28px;
     box-shadow: 0px 0px 2px white;
     padding: 0.5em 0.6em;
 }
 
 .location-search-addon {
     position: relative;
+    width: 35vw;
+    left: 29vw;
 }
+
+@media (max-width: 768px) {
+    .location-search-addon {
+        position: relative;
+        //width: 35vw;
+        //left: 18vw;
+        width: 70vw;
+        left: 0vw;
+    }
+}
+
 .location-search-addon input {
     padding-left: 30px;
     padding-right: 30px;   
@@ -117,26 +149,24 @@ footer a:hover {
     font-size: 20px;
 }
 
-.location-search-addon #button {
+.location-search-addon #findFoodButton {
     position: absolute;
-    right: -100px;
+    right: -8.5vw;
     padding: 10px 12px;
-    width: 104px;
+    width: 9vw;
     background-color: #00923f;
     height: 40px;    
 }
 
-.slide-image
-{
-	position: relative;
-	top: 0;
-	left: 0;
-}
-.transparent-image
-{
-	position: absolute;
-	top: 0px;
-	left: 0px;
+@media (max-width: 768px) {
+    .location-search-addon #findFoodButton {
+        position: absolute;
+        right: -24.5vw;
+        padding: 10px 12px;
+        width: 25vw;
+        background-color: #00923f;
+        height: 40px;    
+    }
 }
 
 .thirdLayer {
@@ -160,4 +190,126 @@ footer a:hover {
     top: 360px;
     right: 0px;    
 }
+
+@media (max-width: 768px) {
+    .thirdLayerOverlay1 {
+        display: none;    
+    }
+    
+    .thirdLayerOverlay2 {
+        display: none;
+    }
+    
+    .thirdLayerOverlay3 {
+        display: none;
+    }
+    .line-css {
+        display: none;
+    }
+}
+
+agm-map {
+    height: 35vh;
+    width: 43.5vw;
+}
+
+@media (max-width: 768px) {
+    agm-map {
+        height: 45vh;
+        //width: 59.5vw;
+        width: 93vw;
+    }
+}
+
+.findRestaurants{
+    width: 43.5vw !important;
+}
+
+@media (max-width: 768px) {
+    .findRestaurants{        
+       // width: 59.5vw !important;
+        width: 93vw !important;
+    }
+}
+
+.search-location-display {
+    position: absolute;
+    top: 16vh;
+    width: 100%;
+    //left: 340px;
+    color: white;
+}
+
+.edit-location {
+    position: absolute;   
+    bottom: 7vh;     
+    width: 43.5vw !important; 
+    text-align: right;
+    padding: 5px;  
+}
+
+@media (max-width: 768px) {
+    .edit-location {
+        position: absolute;   
+        bottom: 7vh;     
+        //width: 59.5vw !important; 
+        width: 93vw !important; 
+        text-align: right;
+        padding: 5px;  
+    }
+}
+
+.close-map {
+    position: absolute;   
+    width: 43.5vw !important;
+    top: 0vh;         
+    text-align: right;    
+}
+
+@media (max-width: 768px) {
+    .close-map {
+        position: absolute;   
+        //width: 59.5vw !important;
+        width: 93vw !important;
+        top: 0vh;         
+        text-align: right;    
+    }
+}
+
+.close-icon {
+	border:1px solid transparent;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+    outline: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 0px;
+    padding: 17px;    
+    font-size: 20px;
+}
+.close-icon:after {
+	content: "X";
+	display: block;
+	width: 15px;
+	height: 22px;
+	position: absolute;	
+	z-index:1;
+	right: 35px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	padding: 2px;	
+	text-align: center;
+	color: black;
+	font-weight: normal;
+	font-size: 17px;	
+	cursor: pointer;
+}
+
+#bg {
+    position: relative;   
+}
+
+
 
