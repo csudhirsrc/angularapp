@@ -63,7 +63,7 @@ export class FirstLayerComponent {
       this.markers[0].lng = this.initialLongitude;
       this.latitude = this.initialLatitude;
       this.longitude = this.initialLongitude;
-    } else {            
+    } else {
       this.markers[0].lat = this.latitude;
       this.markers[0].lng = this.longitude;
     }
@@ -165,13 +165,9 @@ export class FirstLayerComponent {
           let rsltAdrComponent = result.address_components;
           let resultLength = rsltAdrComponent.length;
           if (result != null) {
-            this.locationName = rsltAdrComponent[resultLength - 8].short_name + ', ' + rsltAdrComponent[resultLength - 7].short_name + ', ' +
-              rsltAdrComponent[resultLength - 6].short_name + ', ' + rsltAdrComponent[resultLength - 5].short_name + ', ' + rsltAdrComponent[resultLength - 4].short_name + ', ' +
-              rsltAdrComponent[resultLength - 3].short_name + ', ' + rsltAdrComponent[resultLength - 2].short_name;
+            this.locationName = this.getAddress(rsltAdrComponent, resultLength);
             if (!isResetLocationInitial) {
-              this.initialLocation = rsltAdrComponent[resultLength - 8].short_name + ', ' + rsltAdrComponent[resultLength - 7].short_name + ', ' +
-                rsltAdrComponent[resultLength - 6].short_name + ', ' + rsltAdrComponent[resultLength - 5].short_name + ', ' + rsltAdrComponent[resultLength - 4].short_name + ', ' +
-                rsltAdrComponent[resultLength - 3].short_name + ', ' + rsltAdrComponent[resultLength - 2].short_name;
+              this.initialLocation = this.getAddress(rsltAdrComponent, resultLength);
             }
 
             this.searchElementRef.nativeElement.focus();
@@ -185,8 +181,23 @@ export class FirstLayerComponent {
     }
   }
 
+  public getAddress(rsltAdrComponent: any, resultLength: any): string {
+    let address: string = "";
+    for (let i = 8; i >= 2; i--) {
+      try {
+        address = address + rsltAdrComponent[resultLength - i].short_name + ",";
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    if (address.charAt(address.length - 1) == ',') {
+      address = address.substring(0, address.length - 1);
+    }
+    return address;
+  }
+
   public isCloseEnable(): boolean {
-    if(this.locationName && this.locationName.length > 0) {
+    if (this.locationName && this.locationName.length > 0) {
       this.closeFlag = true;
       return true;
     } else {
@@ -197,7 +208,7 @@ export class FirstLayerComponent {
 
   public resetSearch() {
     this.locationName = "";
-    this.closeFlag = false;        
+    this.closeFlag = false;
   }
 }
 

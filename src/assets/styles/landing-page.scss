@@ -84,6 +84,17 @@ footer a:hover {
     z-index: 11;
 }
 
+@media (max-width: 768px) {
+    .carousel-control.left {
+        height: 100% !important;
+        z-index: 0;
+    }
+    
+    .carousel-control.right {
+        height: 100% !important;
+        z-index: 0;
+    }
+}
 .button-white {
     background-color: white;
     margin-top: 17px;
@@ -113,10 +124,10 @@ footer a:hover {
 @media (max-width: 768px) {
     .location-search-addon {
         position: relative;
-        width: 35vw;
-        left: 18vw;
-        //width: 75vw;
-        //left: 0vw;
+        //width: 35vw;
+        //left: 18vw;
+        width: 70vw;
+        left: 0vw;
     }
 }
 
@@ -188,7 +199,8 @@ agm-map {
 @media (max-width: 768px) {
     agm-map {
         height: 45vh;
-        width: 59.5vw;
+        //width: 59.5vw;
+        width: 93vw;
     }
 }
 
@@ -198,7 +210,8 @@ agm-map {
 
 @media (max-width: 768px) {
     .findRestaurants{        
-        width: 59.5vw !important;
+       // width: 59.5vw !important;
+        width: 93vw !important;
     }
 }
 
@@ -226,7 +239,8 @@ agm-map {
     .edit-location {
         position: absolute;   
         bottom: 7vh;     
-        width: 59.5vw !important; 
+        //width: 59.5vw !important; 
+        width: 93vw !important; 
         text-align: right;
         padding: 5px;  
     }
@@ -242,7 +256,8 @@ agm-map {
 @media (max-width: 768px) {
     .close-map {
         position: absolute;   
-        width: 59.5vw !important;
+        //width: 59.5vw !important;
+        width: 93vw !important;
         top: 0vh;         
         text-align: right;    
     }
