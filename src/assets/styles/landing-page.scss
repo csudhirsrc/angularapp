@@ -47,7 +47,7 @@
 footer {
     background-color: #2a2e39;
     color: white;
-    height: 40px;
+    height: 6vh;
     position: fixed;
     bottom: 0px;
     width: 100%;
@@ -191,6 +191,23 @@ footer a:hover {
     right: 0px;    
 }
 
+@media (max-width: 768px) {
+    .thirdLayerOverlay1 {
+        display: none;    
+    }
+    
+    .thirdLayerOverlay2 {
+        display: none;
+    }
+    
+    .thirdLayerOverlay3 {
+        display: none;
+    }
+    .line-css {
+        display: none;
+    }
+}
+
 agm-map {
     height: 35vh;
     width: 43.5vw;
@@ -213,10 +230,6 @@ agm-map {
        // width: 59.5vw !important;
         width: 93vw !important;
     }
-}
-
-.agm-map-container-inner .sebm-google-map-container-inner {
-    border: 1px solid green !important;
 }
 
 .search-location-display {

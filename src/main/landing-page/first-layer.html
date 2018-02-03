@@ -87,8 +87,8 @@
                         <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.label, i)" [latitude]="m.lat" [longitude]="m.lng"
                             [label]="m.label" [markerDraggable]="m.draggable" (dragEnd)="markerDragEnd(m, $event)">
 
-                            <agm-info-window>
-                                <strong>You are here</strong>
+                            <agm-info-window [isOpen]="true">
+                                <strong style="color: black">You are here</strong>
                             </agm-info-window>
                         </agm-marker>
                     </agm-map>                                        
