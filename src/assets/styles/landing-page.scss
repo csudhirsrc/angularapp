@@ -1,9 +1,10 @@
 
+/**
 #landingPageId {
-    font-family: 'Maven Pro', sans-serif;
+    font-family: 'Myriad Set Pro'; letter-spacing: -0.025em;
     background-color: white;
 }
-
+**/
 .carousel-inner img {    
     width: 100% ; 
     margin: auto ;
@@ -105,7 +106,20 @@ footer a:hover {
 
 .location-search-addon {
     position: relative;
+    width: 35vw;
+    left: 29vw;
 }
+
+@media (max-width: 768px) {
+    .location-search-addon {
+        position: relative;
+        width: 35vw;
+        left: 18vw;
+        //width: 75vw;
+        //left: 0vw;
+    }
+}
+
 .location-search-addon input {
     padding-left: 30px;
     padding-right: 30px;   
@@ -124,13 +138,24 @@ footer a:hover {
     font-size: 20px;
 }
 
-.location-search-addon #button {
+.location-search-addon #findFoodButton {
     position: absolute;
-    right: -100px;
+    right: -8.5vw;
     padding: 10px 12px;
-    width: 104px;
+    width: 9vw;
     background-color: #00923f;
     height: 40px;    
+}
+
+@media (max-width: 768px) {
+    .location-search-addon #findFoodButton {
+        position: absolute;
+        right: -24.5vw;
+        padding: 10px 12px;
+        width: 25vw;
+        background-color: #00923f;
+        height: 40px;    
+    }
 }
 
 .thirdLayer {
@@ -156,8 +181,25 @@ footer a:hover {
 }
 
 agm-map {
-    height: 316px;
-    width: 631px;
+    height: 35vh;
+    width: 43.5vw;
+}
+
+@media (max-width: 768px) {
+    agm-map {
+        height: 45vh;
+        width: 59.5vw;
+    }
+}
+
+.findRestaurants{
+    width: 43.5vw !important;
+}
+
+@media (max-width: 768px) {
+    .findRestaurants{        
+        width: 59.5vw !important;
+    }
 }
 
 .agm-map-container-inner .sebm-google-map-container-inner {
@@ -166,26 +208,80 @@ agm-map {
 
 .search-location-display {
     position: absolute;
-    top: 60px;
+    top: 16vh;
     width: 100%;
     //left: 340px;
     color: white;
 }
 
 .edit-location {
+    position: absolute;   
+    bottom: 7vh;     
+    width: 43.5vw !important; 
+    text-align: right;
+    padding: 5px;  
+}
+
+@media (max-width: 768px) {
+    .edit-location {
+        position: absolute;   
+        bottom: 7vh;     
+        width: 59.5vw !important; 
+        text-align: right;
+        padding: 5px;  
+    }
+}
+
+.close-map {
+    position: absolute;   
+    width: 43.5vw !important;
+    top: 0vh;         
+    text-align: right;    
+}
+
+@media (max-width: 768px) {
+    .close-map {
+        position: absolute;   
+        width: 59.5vw !important;
+        top: 0vh;         
+        text-align: right;    
+    }
+}
+
+.close-icon {
+	border:1px solid transparent;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+    outline: 0;
+    cursor: pointer;
     position: absolute;
-    top: 447px;
     right: 0px;
-    width: 100%;
+    padding: 17px;    
+    font-size: 20px;
+}
+.close-icon:after {
+	content: "X";
+	display: block;
+	width: 15px;
+	height: 22px;
+	position: absolute;	
+	z-index:1;
+	right: 35px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	padding: 2px;	
+	text-align: center;
+	color: black;
+	font-weight: normal;
+	font-size: 17px;	
+	cursor: pointer;
 }
 
 #bg {
     position: relative;   
 }
 
-.agm-map-content div{
-    border: 5px solid red !important;
-}
 
-  
 

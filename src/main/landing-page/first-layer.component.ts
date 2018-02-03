@@ -13,6 +13,7 @@ declare var google: any;
 })
 export class FirstLayerComponent {
   @Input() public displaySearchBar: boolean;
+  public displaySearchBar1: boolean = false;
 
   public initialLatitude: number;
   public initialLongitude: number;
@@ -23,6 +24,7 @@ export class FirstLayerComponent {
   public locationName: string;
   public zoom: number;
   public isNativeElementLoaded: boolean;
+  public closeFlag: boolean;
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
@@ -182,7 +184,23 @@ export class FirstLayerComponent {
       });
     }
   }
+
+  public isCloseEnable(): boolean {
+    if(this.locationName && this.locationName.length > 0) {
+      this.closeFlag = true;
+      return true;
+    } else {
+      this.closeFlag = false;
+      return false;
+    }
+  }
+
+  public resetSearch() {
+    this.locationName = "";
+    this.closeFlag = false;        
+  }
 }
+
 
 // just an interface for type safety.
 interface marker {
