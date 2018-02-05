@@ -25,6 +25,13 @@ export class FirstLayerComponent {
   public zoom: number;
   public isNativeElementLoaded: boolean;
   public closeFlag: boolean;
+  public disableUnwanted: any = [{
+    featureType: "poi.business",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  }];
 
   @ViewChild("search")
   public searchElementRef: ElementRef;
