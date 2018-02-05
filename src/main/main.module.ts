@@ -15,7 +15,7 @@ import { ThirdLayerComponent } from './landing-page/third-layer.component';
 import { FourthLayerComponent } from './landing-page/fourth-layer.component';
 import { LoginSignupComponent } from './landing-page/login-singup.component';
 import { AgmCoreModule } from '@agm/core';
-
+import { CrashMealUtilModule } from "../crash-meal-util/crash-meal-util.module";
 
 
 @NgModule({
@@ -36,6 +36,7 @@ import { AgmCoreModule } from '@agm/core';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        CrashMealUtilModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyCSDaTkl_YIMafkL3br1RvQn7IUGT9aT_I',
             libraries: ["places"]
